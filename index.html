@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100wh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e2d3f7;
+    }
+
+    .countdown {
+      position: relative;
+      width: 512px;
+      height: 512px;
+      text-align: center;
+      line-height: 1;
+      padding-top: 250px;
+      overflow: hidden;
+      border-radius: 170px;
+    }
+    .countdown:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url(./images/Christmas.png);
+      opacity: 0.5;
+    }
+
+    .countdown .next {
+      width: 220px;
+      height: 50px;
+      line-height: 50px;
+      color: rgb(255, 255, 255);
+      background-color: #000;
+      margin: 0 auto;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    .countdown .title {
+      font-size: 25px;
+    }
+
+    .countdown .title i {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 36px;
+    }
+
+    .countdown .tips {
+      margin-top: 50px;
+      font-size: 23px;
+    }
+
+    .countdown small {
+      font-size: 17px;
+    }
+
+    .countdown .day {
+
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      color: white;
+      background-color: #000;
+      margin: 60px auto 0;
+      font-size: 32px;
+      border-radius: 15px;
+    }
+
+    .countdown .clock {
+      width: 190px;
+      margin: 20px auto 0;
+      overflow: hidden;
+    }
+
+    .countdown .clock span,
+    .countdown .clock i {
+      display: block;
+      text-align: center;
+      line-height: 50px;
+      font-size: 30px;
+      float: left;
+    }
+
+    .countdown .clock span {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background-color: #000;
+      color: white;
+    }
+
+    .countdown .clock i {
+      width: 20px;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="countdown">
+      <p class="next">今天是2222年2月22日</p>
+      <p class="day">
+        <span id="day">00</span>
+        <i>days </i>
+      </p>
+      <p class="clock">
+        <span id="hour">00</span>
+        <i>:</i>
+        <span id="minutes">25</span>
+        <i>:</i>
+        <span id="second">20</span>
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    // 获取当前时间模块
+    function getMyData() {
+      const date = new Date();
+      const y = date.getFullYear()
+      const m = date.getMonth() + 1
+      const d = date.getDate()
+      return `Today is ${y}-${m}-${d}`
+    }
+    document.querySelector('.next').innerHTML = getMyData()
+
+    // 倒计时模块
+    // 封装函数
+    function getCountDown(){
+      // 当前时间戳
+    const now = +new Date()
+    // 指定时间戳
+    const next = +new Date('2023-12-25 00:00:00')
+    // 倒计时总秒数
+    const time = parseInt((next - now) / 1000)
+    // 转换时分秒并补零
+    let d = parseInt(time / 60 / 60 / 24)
+    let h = parseInt(time / 60 / 60 % 24)
+    h = h < 10 ? '0' + h : h
+    let m = parseInt(time / 60 % 60)
+    m = m < 10 ? '0' + m : m
+    let s = parseInt(time % 60)
+    s = s < 10 ? '0' + s : s
+    // 渲染到页面
+    document.querySelector('#day').innerHTML = d
+    document.querySelector('#hour').innerHTML = h
+    document.querySelector('#minutes').innerHTML = m
+    document.querySelector('#second').innerHTML = s
+    }
+
+    // 设置定时器
+    // 先调用一次函数
+    getCountDown()
+    setInterval(getCountDown, 1000)
+
+    // 随机背景颜色
+    function getRandomColor(flag) {
+      if (flag) {
+        //2. flag 是true时， 返回16进制的颜色 #ffffff
+        let str = '#'
+        for (let i = 0; i <= 6; i++) {
+          let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+          let random = Math.floor(Math.random() * arr.length)
+          str += arr[random]
+        }
+        return str
+      }
+      else {
+        // 3. flag 是false时， 返回rgb进制的颜色 rgb(255,255,255)
+        let r = Math.floor(Math.random() * 256)
+        let g = Math.floor(Math.random() * 256)
+        let b = Math.floor(Math.random() * 256)
+        return `rgb(${r},${g},${b},0.5)`
+      }
+    }
+
+    setInterval(function(){
+      document.querySelector('.container').style.backgroundColor=getRandomColor(false)
+    }, 1000)
+  </script>
+</body>
+
+</html>
