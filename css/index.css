@@ -1,0 +1,99 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 容器样式 */
+.container {
+  width: 100vw; /* 修正为 viewport 宽度 */
+  height: 100vh; /* 使用 viewport 高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2d3f7;
+}
+
+/* 倒计时组件样式 */
+.countdown {
+  position: relative;
+  width: 512px;
+  height: 512px;
+  padding-top: 200px;
+  text-align: center;
+  line-height: 1;
+  overflow: hidden;
+  border-radius: 170px;
+  background: rgba(0, 0, 0, 0.5) url('../images/Christmas.png') no-repeat center center / cover; /* 简化背景图片处理 */
+}
+
+.countdown .next {
+  width: 300px;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
+  font-size: 26px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.countdown .title {
+  font-size: 25px;
+}
+
+.countdown .title i {
+  margin-top: 10px;
+  font-size: 36px;
+}
+
+.countdown .tips {
+  margin-top: 50px;
+  font-size: 23px;
+}
+
+.countdown small {
+  font-size: 17px;
+}
+
+/* 天数样式 */
+.countdown .day {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  margin: 40px auto 0;
+  font-size: 32px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 15px;
+}
+
+/* 时钟样式 */
+.countdown .clock {
+  width: 190px;
+  margin: 20px auto 0;
+  overflow: hidden;
+}
+
+.countdown .clock span,
+.countdown .clock i {
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  float: left;
+}
+
+.countdown .clock span {
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  background-color: #000;
+  border-radius: 15px;
+}
+
+.countdown .clock i {
+  width: 20px;
+  font-style: normal;
+}
