@@ -17,14 +17,17 @@
 
 /* 倒计时组件样式 */
 .countdown {
-  position: relative;
-  width: 512px;
-  height: 512px;
-  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70vh;
+  height: 70vh;
+  padding-top: 160px;
   text-align: center;
   line-height: 1;
   overflow: hidden;
-  border-radius: 170px;
+  border-radius: 200px;
   background: rgba(0, 0, 0, 0.5) url('../images/Christmas.png') no-repeat center center / cover; /* 简化背景图片处理 */
 }
 
